@@ -1,0 +1,115 @@
+/* Footer
+ * ==================================================*/
+
+// == Footer Nav
+.footer-nav {
+    background-color: $footer-nav-bg;
+    padding-top: $outer-padding-vertical;
+    padding-bottom: 0;
+
+    &,
+    ul {
+        @include list-unstyled();
+    }
+
+    .list-nav {
+        a {
+            color: $gray;
+
+            &:focus,
+            &:hover {
+                color: $gray-darker;
+            }
+        }
+
+        .link-heading {
+            font-size: $font-size-base;
+            border-bottom: solid 1px darken($footer-nav-bg, 15%);
+            margin-top: 0;
+            margin-bottom: $foo-nav-gutter-ver;
+            padding-bottom: 6px;
+        }
+
+        .list-list {
+            font-size: $font-size-small;
+            margin-bottom: $foo-nav-gutter-ver * 2;
+
+            > li {
+                display: block;
+                margin-bottom: $foo-nav-gutter-ver;
+            }
+        }
+
+        &.row {
+            margin-left: ceil(($foo-nav-gutter-hor) / -2);
+            margin-right: floor(($foo-nav-gutter-hor) / -2);
+
+            .col {
+                float: left;
+                position: relative;
+                min-height: 1px;
+                padding-left: floor($foo-nav-gutter-hor / 2);
+                padding-right: ceil($foo-nav-gutter-hor / 2);
+                width: 14.28571428571429%;
+                @media (max-width : $screen-xs-max) {
+                    width: 25%;
+                }
+                @media (max-width : $screen-xxs-max) {
+                    width: 33.33333333333333%;
+                }
+                @media (max-width : $screen-xxxs-max) {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
+// == Footer Contact
+.footer-info {
+    padding-top: $outer-padding-vertical;
+    padding-bottom: $outer-padding-vertical;
+    background-color: #fff;
+
+    .contact-name {
+        margin: 0 0 20px;
+        font-size: $font-size-base;
+        font-weight: 600;
+
+        .small {
+            color: inherit;
+            display: block;
+            font-size: $font-size-small;
+        }
+    }
+
+    .contact-info {
+        margin: 0;
+        line-height: $line-height-article;
+
+        .br {
+            @media (min-width : $screen-xxs-min) {
+                display: block;
+            }
+        }
+    }
+
+    .right-wrap {
+        position: relative;
+
+        .inner {
+            padding-top: 20px;
+            @media (min-width : $screen-sm-min) {
+                text-align: right;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+        }
+    }
+}
+// == Copyright
+.copyright {
+    text-align: center;
+    font-size: $font-size-small;
+    padding: 15px 0;
+}

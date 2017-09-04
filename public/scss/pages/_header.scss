@@ -1,0 +1,94 @@
+/*  =================================================
+ * Header
+ * ==================================================*/
+@mixin header-inner-variant($inner-height, $logo-height) {
+    height: $inner-height;
+
+    .header-logo {
+        height: $logo-height;
+        margin-top: ceil(($inner-height - $logo-height)/2);
+        margin-bottom: ceil(($inner-height - $logo-height)/2);
+    }
+}
+
+.header {
+    position: relative;
+    z-index: 99;
+    @include transition( left .3s);
+    @media (max-width: $grid-float-breakpoint-max) {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+}
+// == header top
+.header-top {
+    margin: 0;
+    min-height: $header-top-height;
+    font-size: 14px;
+    overflow: hidden;
+    @include border-radius(0);
+
+    .navbar-nav {
+        float: none;
+        margin: 0;
+        text-align: right;
+
+        > li {
+            float: none;
+            display: inline-block;
+
+            > a {
+                padding: 0 10px;
+                height: $header-top-height;
+                line-height: $header-top-height;
+                @media (max-width: $screen-xxs-min) {
+                    padding-left: 6px;
+                    padding-right: 6px;
+                    font-size: 12px;
+                }
+            }
+
+            + li {
+                margin-left: -4px;
+            }
+
+            &.active > a {
+                cursor: default;
+            }
+        }
+        @media (max-width: $grid-float-breakpoint-max) {
+            text-align: center;
+        }
+    }
+}
+// == brand bar
+.header-inner {
+    position: relative;
+    background-color: #fff;
+    height: $header-inner-height;
+
+    .header-logo {
+        display: inline-block;
+        line-height: 1;
+        width: auto;
+        height: $header-logo-height;
+        margin: ($header-inner-height - $header-logo-height)/2 0;
+
+        img {
+            width: auto;
+            height: 100%;
+        }
+    }
+    @media (max-width: $screen-xs-max) {
+         @include header-inner-variant($header-inner-height-sm, $header-logo-height-sm);
+    }
+    @media (max-width: $grid-float-breakpoint-max) {
+        text-align: center;
+        @include header-inner-variant($header-inner-height-xs, $header-logo-height-xs);
+    }
+    @media (max-width: $screen-xxs-min) {
+         @include header-inner-variant($header-inner-height-xxs, $header-logo-height-xxs);
+    }
+}

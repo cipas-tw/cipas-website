@@ -1,0 +1,8 @@
+/* Main Content
+ * ==================================================*/
+.main-content {
+    padding-bottom: $outer-padding-vertical;
+    @media (min-width: $screen-sm-min) {
+        background-color: #fff;
+    }
+}

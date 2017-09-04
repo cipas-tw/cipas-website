@@ -1,0 +1,31 @@
+/* Plugins
+ * ==================================================*/
+body:not(.js-enable) {
+    .fotorama img {
+        display: block !important;
+        max-width: 100%;
+        margin-bottom: 1em;
+    }
+}
+
+.fotorama__stage {
+    background-color: #000;
+}
+
+.fotorama__thumb-border {
+    background: none !important;
+    border-width: 0 !important;
+}
+
+.fotorama__active .fotorama__thumb:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: solid 3px $brand-primary;
+}

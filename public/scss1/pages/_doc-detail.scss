@@ -1,0 +1,15 @@
+/* Doc Detail
+ * ==================================================*/
+.page-header + .doc-detail {
+    margin-top: -20px;
+}
+
+.doc-detail {
+    .date {
+        padding: 8px 0;
+    }
+
+    .article {
+        padding-bottom: $grid-gutter-width-lg;
+    }
+}

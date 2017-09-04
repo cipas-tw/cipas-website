@@ -1,0 +1,131 @@
+/* Doc Gallery View
+ * ==================================================*/
+.doc-gallery-view {
+    .thumbnail {
+        background-color: transparent;
+        margin-bottom: 30px;
+        padding: 0;
+        border-width: 0;
+        @include border-radius(0);
+        .img-box {
+            display: block;
+            background-color: $gray-lighter;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .caption {
+            padding: 0;
+            margin: 10px 0;
+            height: 5.5em;
+            overflow: hidden;
+            word-wrap: break-word;
+            word-break: break-all;
+
+            &.vertical-center {
+                height: 3.25em;
+            }
+
+            .info-row {
+                margin-bottom: 5px;
+                white-space: nowrap;
+
+                .label-category {
+                    margin-right: 4px;
+                }
+
+                .date {
+                    font-size: $font-size-small;
+                }
+            }
+
+            .doc-title {
+                font-size: $font-size-large;
+                margin: 0;
+            }
+        }
+        @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+            .caption {
+                .doc-title {
+                    font-size: $font-size-base;
+                }
+            }
+        }
+        // == 圖在左，標題在右模式
+        @media (max-width: $screen-xs-max) {
+            zoom: 1;
+            overflow: hidden;
+            display: table;
+            table-layout: fixed;
+
+            .caption,
+            .img-box {
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            .img-box {
+                width: 44.02173913043478%;
+            }
+
+            .caption {
+                width: 10000px;
+                height: auto;
+                padding-left: ceil( $grid-gutter-width / 2);
+                margin: 0;
+
+                .info-row {
+                    margin-bottom: 12px;
+                    white-space: normal;
+
+                    .date {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+        @media (max-width: $screen-xxs-max) {
+            .caption:not(.vertical-center),
+            .img-box {
+                vertical-align: top;
+            }
+
+            .caption {
+                .info-row {
+                    .label-category {
+                        margin-bottom: 12px;
+                    }
+
+                    .date {
+                        display: block;
+                    }
+                }
+
+                .doc-title {
+                    font-size: $font-size-base;
+                }
+            }
+        }
+        @media (max-width: $screen-xxxs-max) {
+            margin-bottom: $grid-gutter-width;
+
+            .caption {
+                .info-row {
+                    margin-bottom: 6px;
+
+                    .label-category {
+                        font-size: 12px;
+                        margin-bottom: 6px;
+                    }
+
+                    .date {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}

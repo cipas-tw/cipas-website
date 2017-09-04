@@ -1,0 +1,217 @@
+/* Top Videos
+ * ==================================================*/
+.top-videos {
+    margin-bottom: 32px;
+    background-color: #000;
+    color: #fff;
+
+    .tab-list {
+        @extend .list-unstyled;
+        display: block;
+        margin: 0;
+
+        > li {
+            display: block;
+
+            > a {
+                display: block;
+                padding: 0 ceil($grid-gutter-width / 2) 0 floor($grid-gutter-width / 2);
+                font-size: $font-size-base;
+                color: #fff;
+                overflow: hidden;
+
+                &:focus,
+                &:hover {
+                    text-decoration: none;
+                }
+
+                .t-wrap {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .panel-viedos {
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    // == tab 在左側時
+    @media (min-width: $screen-sm-min) {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        height: 100%;
+
+        .is-table-row {
+            height: 100%;
+        }
+
+        .responsive-height {
+            position: relative;
+            display: block;
+            height: 100%;
+            padding: 0 0 135.6%;
+            overflow: hidden;
+        }
+
+        .panel-tabs,
+        .panel-viedos {
+            display: table-cell;
+            height: 100%;
+            vertical-align: top;
+        }
+
+        .panel-tabs {
+            background-color: $video-tab-bg;
+            width: 29.296875%; // (300px/1024px)
+        }
+
+        .panel-viedos {
+            min-height: 300px;
+        }
+
+        .tab-list {
+            background-color: $video-tab-bg;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            border: 0;
+
+            > li {
+                height: 25%;
+
+                > a {
+                    height: 100%;
+
+                    &:focus,
+                    &:hover {
+                        background-color: $video-tab-bg-hover;
+                    }
+
+                    &:active {
+                        background-color: $video-tab-bg-active;
+                    }
+
+                    .t-wrap {
+                        max-height: 3em;
+                        overflow: hidden;
+                        @include ver-center;
+                    }
+                }
+
+                &.active > a {
+                    background-color: $video-tab-bg-active;
+                    cursor: default;
+                }
+
+                + li > a {
+                    border-top: solid 1px rgba($video-tab-border-color, .5);
+                }
+            }
+        }
+    }
+    // == tab 在左側，大螢幕時按鈕文字變大
+    @media (min-width: $screen-md-min) {
+        .tab-list {
+            > li > a {
+                font-size: $font-size-large;
+                padding-left: $grid-gutter-width-lg;
+                padding-right: floor($grid-gutter-width-lg / 2);
+            }
+        }
+    }
+    // == tab 為下拉方式時
+    @media (max-width: $screen-xs-max) {
+        .is-table-row {
+            display: block;
+            height: auto;
+        }
+
+        .panel-tabs {
+            //width: 100%;
+            position: relative;
+            padding-top: $video-dropdown-height;
+        }
+
+        .tab-list {
+            position: absolute;
+            background-color: $video-dropdown-bg;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+
+            > li {
+                width: 100%;
+
+                > a {
+                    @include transition(height .2s);
+                    height: 0;
+                    overflow: hidden;
+                    // height: $video-dropdown-height;
+                    line-height: $video-dropdown-height;
+                    padding-right: 40px;
+
+                    &:focus,
+                    &:hover {
+                        background-color: $video-dropdown-bg-hover;
+                    }
+
+                    &:active {
+                        background-color: $video-dropdown-bg-active;
+                    }
+
+                    .t-wrap {
+                        @include text-overflow;
+                    }
+                }
+
+                &.active {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    > a {
+                        background-color: $video-dropdown-bg-active;
+                        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25px' height='14px' viewBox='0 0 25 14'%3E%3Cpath fill='%23ffffff' d='M12.5,14c-0.3,0-0.6-0.1-0.9-0.4L0.4,2.1c-0.5-0.5-0.5-1.3,0-1.8c0.5-0.5,1.3-0.5,1.7,0 L12.5,11L22.9,0.4c0.5-0.5,1.3-0.5,1.7,0c0.5,0.5,0.5,1.3,0,1.8L13.4,13.6C13.1,13.9,12.8,14,12.5,14L12.5,14z'/%3E%3C/svg%3E");
+                        background-repeat: no-repeat;
+                        background-size: 16px 9px;
+                        background-position: right 14px center;
+                        height: $video-dropdown-height;
+                        border-top-width: 0;
+                    }
+                }
+            }
+
+            &.open {
+                padding-top: $video-dropdown-height;
+
+                > li {
+                    > a {
+                        border-top: solid 1px rgba($video-dropdown-border-color, .5);
+                        height: $video-dropdown-height;
+                    }
+
+                    &.active {
+                        > a {
+                            border-top-width: 0;
+                            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25px' height='14px' viewBox='0 0 25 14'%3E%3Cpath fill='%23ffffff' d='M12.5,0c0.3,0,0.6,0.1,0.9,0.4l11.3,11.5c0.5,0.5,0.5,1.3,0,1.8c-0.5,0.5-1.3,0.5-1.7,0 L12.5,3L2.1,13.6c-0.5,0.5-1.3,0.5-1.7,0c-0.5-0.5-0.5-1.3,0-1.8L11.6,0.4C11.9,0.1,12.2,0,12.5,0L12.5,0z'/%3E%3C/svg%3E");
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // == tab 為下拉方式，小螢幕時按鈕文字變小
+    @media (max-width: 359px) {
+        .tab-list > li > a {
+            font-size: 15px;
+        }
+    }
+}

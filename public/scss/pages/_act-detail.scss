@@ -1,0 +1,108 @@
+/* Act Detail
+ * ==================================================*/
+.sub-header {
+    + .act-article,
+    + .act-history {
+        padding-left: 24px;
+    }
+}
+
+.act-detail {
+    .tab-pane & {
+        padding-top: 20px;
+    }
+}
+
+.act-history {
+    border-bottom: solid 1px $base-border-color;
+    padding: 0 0 16px;
+    margin-bottom: 20px;
+
+     > ol,
+    > ul {
+        margin-bottom: 0;
+
+        > li {
+            margin-bottom: 0.5em;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.act-article {
+    .chp {
+        color: $brand-sub-blue;
+        display: block;
+        font-size: $font-size-large;
+        font-weight: $font-weight-bold;
+    }
+
+    .num {
+        white-space: nowrap;
+
+        .pill {
+            display: block;
+            background-color: $brand-sub-blue;
+            color: #fff;
+            height: 35px;
+            line-height: 35px;
+            min-width: 100px;
+            padding: 0 16px;
+            text-align: center;
+            @include border-radius(100px);
+        }
+    }
+
+    .rule {
+        padding: 12px 0;
+    }
+
+    .num {
+        display: inline-block;
+        margin: 0 0 5px;
+
+        .pill {
+            margin: 0;
+        }
+    }
+
+    .text {
+        display: block;
+        width: 100%;
+    }
+    @media (min-width: $grid-float-breakpoint) {
+        .chp {
+            margin-bottom: 16px;
+        }
+
+        .rule,
+        .text {
+            overflow: hidden;
+            zoom: 1;
+        }
+
+        .rule {
+            padding: 16px 0;
+        }
+
+        .num,
+        .text {
+            display: table-cell;
+            vertical-align: top;
+        }
+
+        .num {
+            .pill {
+                margin-top: -.25em;
+                margin-right: 16px;
+            }
+        }
+
+        .text {
+            width: 10000px;
+        }
+    }
+}

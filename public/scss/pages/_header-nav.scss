@@ -1,0 +1,402 @@
+/* Header Nav
+ * ==================================================*/
+
+// == navbar tollger
+.navbar-toggler {
+    display: none;
+    @media (max-width: $grid-float-breakpoint-max) {
+        background: #fff;
+        position: absolute;
+        display: block;
+        width: 48px;
+        height: 48px;
+        left: 5px;
+        top: 50%;
+        margin-top: -24px;
+        @include border-radius($border-radius-base);
+
+        .bar {
+            position: absolute;
+            background: $navbar-toggler-bar-color;
+            display: block;
+            width: 24px;
+            height: 2px;
+            @include border-radius(1px);
+            top: 50%;
+            left: 50%;
+            margin-top: -2px;
+            margin-left: -12px;
+
+            &::after,
+            &::before {
+                content: '';
+                display: block;
+                background: $navbar-toggler-bar-color;
+                position: absolute;
+                width: inherit;
+                height: inherit;
+                left: 0;
+                @include border-radius(1px);
+            }
+
+            &::before {
+                top: -6px;
+            }
+
+            &::after {
+                bottom: -6px;
+            }
+        }
+
+        &:focus,
+        &:hover {
+            outline: 0;
+        }
+
+        &:active {
+            .bar {
+                background: $brand-primary;
+
+                &::after,
+                &::before {
+                    background: $brand-primary;
+                }
+            }
+        }
+    }
+}
+// == header navbar
+
+.header-nav {
+    @include border-radius(0);
+    min-height: 30px;
+    margin-bottom: 0;
+    z-index: $zindex-navbar;
+
+    .container {
+        position: relative;
+    }
+    @media (max-width: $grid-float-breakpoint-max) {
+         @include transition( left .3s);
+        background: #fff;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: -($push-nav-width);
+        width: $push-nav-width;
+        height: 100vh;
+        overflow-y: auto;
+    }
+}
+// == Site Search
+
+.site-search {
+    @include clearfix;
+
+    .search-form {
+        float: right;
+        max-width: 37.25%;
+        min-width: 336px; // input:272px + submit button:64px
+        margin-top: -90px;
+        //overflow: hidden;
+        .btn-search {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27px' height='27px' viewBox='0 0 27 27'%3E%3Cpath fill='%23ffffff' d='M26.4,23.6l-7.2-7.2c1.1-1.7,1.8-3.7,1.8-5.9C21,4.7,16.3,0,10.5,0S0,4.7,0,10.5S4.7,21,10.5,21 c2.2,0,4.2-0.7,5.9-1.8l7.2,7.2C24,26.8,24.5,27,25,27s1-0.2,1.4-0.6C27.2,25.6,27.2,24.4,26.4,23.6z M4,10.5C4,6.9,6.9,4,10.5,4 S17,6.9,17,10.5S14.1,17,10.5,17S4,14.1,4,10.5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 22px 22px;
+            height: $input-height-base;
+            padding: 0;
+            line-height: $input-height-base;
+            @include border-radius(0);
+            width: 80px;
+        }
+
+        .keywords {
+            padding-top: 8px;
+            @extend .small;
+
+            .label-text,
+            .word {
+                display: inline-block;
+                vertical-align: top;
+                color: $gray-dark;
+            }
+
+            .word {
+                white-space: nowrap;
+                max-width: 4em;
+                overflow: hidden;
+                text-decoration: underline;
+
+                &:hover {
+                    text-decoration: none;
+                    color: $brand-primary;
+                }
+
+                + .word {
+                    margin-left: 1em;
+                }
+            }
+        }
+        @media (max-width: $screen-xs-max) {
+            max-width: 45%;
+            min-width: 192px;
+            margin-top: floor(($header-inner-height-sm + $input-height-base) / -2);
+
+            .btn-search {
+                width: 64px;
+            }
+
+            .keywords {
+                display: none;
+            }
+        }
+        @media (max-width: $grid-float-breakpoint-max) {
+            float: none;
+            margin: 0;
+            max-width: 100%;
+            position: static;
+
+            .input-search {
+                padding: 0 0 0 8px;
+                border-width: 0;
+                @include box-shadow(none);
+                height: $header-top-height + $header-inner-height-xs;
+                line-height: $header-top-height + $header-inner-height-xs;
+                font-size: $font-size-large;
+            }
+
+            .btn-search {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27px' height='27px' viewBox='0 0 27 27'%3E%3Cpath fill='%2362aca2' d='M26.4,23.6l-7.2-7.2c1.1-1.7,1.8-3.7,1.8-5.9C21,4.7,16.3,0,10.5,0S0,4.7,0,10.5S4.7,21,10.5,21 c2.2,0,4.2-0.7,5.9-1.8l7.2,7.2C24,26.8,24.5,27,25,27s1-0.2,1.4-0.6C27.2,25.6,27.2,24.4,26.4,23.6z M4,10.5C4,6.9,6.9,4,10.5,4 S17,6.9,17,10.5S14.1,17,10.5,17S4,14.1,4,10.5z'/%3E%3C/svg%3E");
+                background-color: transparent;
+                border-width: 0;
+                width: 48px;
+                height: 48px;
+                margin-right: -8px;
+                @include border-radius(50%);
+
+                &:active {
+                    background-color: rgba($brand-primary, .2);
+                }
+            }
+        }
+        @media (max-width: $screen-xxxs-max) {
+            .input-search {
+                height: $header-top-height + $header-inner-height-xxs;
+                line-height: $header-top-height + $header-inner-height-xxs;
+            }
+        }
+    }
+}
+// == Site Nav
+
+.site-nav.nav.navbar-nav {
+    font-size: $font-size-large;
+    margin-top: 0;
+    margin-left: ceil(($grid-gutter-width) / -2);
+    margin-right: floor(($grid-gutter-width) / -2);
+
+    > .open > a {
+        &,
+        &:focus,
+        &:hover {
+            background-color: $navbar-inverse-link-active-bg;
+            color: $navbar-inverse-link-active-color;
+        }
+    }
+
+    .dropdown-menu {
+        background-color: $navbar-inverse-link-active-bg;
+        color: $gray-darker;
+        font-size: inherit;
+        @include border-radius(0);
+        @include box-shadow(none);
+        border-width: 0;
+        padding: 0;
+
+        > li {
+            display: block;
+            position: relative;
+
+            + li {
+                border-top: solid 1px #cde5e2;
+            }
+
+            > a {
+                padding: 12px 16px;
+
+                &:focus,
+                &:hover {
+                    background-color: #9dc7c1;
+                }
+            }
+
+            &.active > a {
+                cursor: default;
+                color: $text-color;
+                background-color: #9dc7c1;
+            }
+        }
+    }
+    @media (min-width: 769px) {
+        > li > a {
+            height: 60px;
+            line-height: 60px;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+    @media (min-width: 641px) and (max-width: 768px) {
+        font-size: $font-size-base;
+        display: table;
+        margin-left: -10px;
+        margin-right: -10px;
+
+        > li {
+            float: none;
+            display: table-cell;
+            vertical-align: top;
+
+            > a {
+                padding: 16px 12px;
+                height: auto;
+                line-height: 1.3;
+            }
+        }
+
+        .dropdown-menu {
+            > li > a {
+                padding: 16px 12px;
+            }
+        }
+    }
+    @media (min-width: $grid-float-breakpoint) and (max-width: 640px) {
+        margin-left: -3px;
+        margin-right: -3px;
+        font-size: $font-size-small;
+
+        > li > a {
+            padding: 12px 6px;
+        }
+
+        .dropdown-menu {
+            > li > a {
+                padding: 12px 6px;
+            }
+        }
+    }
+    // == 行動裝置模式
+    @media (max-width: $grid-float-breakpoint-max) {
+        margin-bottom: 0;
+        padding-bottom: 1em;
+        border-top: solid 1px $divider-color;
+
+        > li {
+            width: $push-nav-width;
+
+            > a {
+                padding: 15px 48px 12px 24px;
+                font-size: $font-size-large;
+                border-bottom: solid 1px rgba($divider-color, .5);
+
+                &,
+                &:focus,
+                &:hover {
+                    color: $gray-dark;
+                    background-color: transparent;
+                }
+
+                &:active {
+                    background-color: rgba($brand-primary, .2);
+                    color: $brand-primary;
+                }
+            }
+
+            &.active > a {
+                //background-color: $gray-lighter;
+            }
+
+            &.dropdown {
+                > a.dropdown-toggle {
+                    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25px' height='14px' viewBox='0 0 25 14'%3E%3Cpath fill='%23c4c4c4' d='M12.5,14c-0.3,0-0.6-0.1-0.9-0.4L0.4,2.1c-0.5-0.5-0.5-1.3,0-1.8c0.5-0.5,1.3-0.5,1.7,0 L12.5,11L22.9,0.4c0.5-0.5,1.3-0.5,1.7,0c0.5,0.5,0.5,1.3,0,1.8L13.4,13.6C13.1,13.9,12.8,14,12.5,14L12.5,14z'/%3E%3C/svg%3E");
+                    background-repeat: no-repeat;
+                    background-size: 16px 9px;
+                    background-position: right 24px center;
+
+                    &:active {
+                        background-color: rgba($brand-primary, .2);
+                    }
+                }
+
+                &.open,
+                &.open.active {
+                    > a.dropdown-toggle {
+                        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25px' height='14px' viewBox='0 0 25 14'%3E%3Cpath fill='%238c8d8e' d='M12.5,0c0.3,0,0.6,0.1,0.9,0.4l11.3,11.5c0.5,0.5,0.5,1.3,0,1.8c-0.5,0.5-1.3,0.5-1.7,0 L12.5,3L2.1,13.6c-0.5,0.5-1.3,0.5-1.7,0c-0.5-0.5-0.5-1.3,0-1.8L11.6,0.4C11.9,0.1,12.2,0,12.5,0L12.5,0z'/%3E%3C/svg%3E");
+                        background-color: #fff;
+
+                        &:active {
+                            background-color: rgba($brand-primary, .2);
+                        }
+                    }
+                }
+            }
+        }
+
+        > .open {
+            > a:before {
+                position: absolute;
+                content: '';
+                display: block;
+                background-color: $brand-primary;
+                width: 5px;
+                height: calc(100% + 2px);
+                top: -1px;
+                bottom: -1px;
+                left: 0;
+            }
+
+            .dropdown-menu {
+                display: block;
+            }
+        }
+
+        .dropdown-menu {
+            background-color: #fff;
+            font-size: $font-size-large;
+            position: static;
+            float: none;
+
+            > li {
+                border-bottom: solid 1px rgba($divider-color, .5);
+
+                + li {
+                    border-top-width: 0;
+                }
+
+                &.active > a {
+                    color: $brand-primary-active;
+                    background-color: white;
+                }
+
+                > a {
+                    position: relative;
+                    padding-top: 16px;
+                    padding-bottom: 16px;
+                    padding-left: 42px;
+                    color: $gray-dark;
+
+                    &:focus,
+                    &:hover {
+                        color: $gray-dark;
+                        background-color: transparent;
+                    }
+
+                    &:active {
+                        color: $gray-dark;
+                        background-color: rgba($brand-primary, .2);
+                    }
+                }
+            }
+        }
+    }
+}

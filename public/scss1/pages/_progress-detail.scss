@@ -1,0 +1,93 @@
+/* Progress Detail
+ * ==================================================*/
+.progress-detail {
+    padding-bottom: 20px;
+
+    .pg-row {
+        position: relative;
+        padding-top: 5px;
+        padding-left: 55px;
+
+        &:before {
+            content: '';
+            display: block;
+            background-color: $brand-primary;
+            width: 10px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 15px;
+            bottom: 0;
+            @include border-radius(5px 5px 0 0);
+        }
+
+        + .pg-row {
+            padding-top: 24px;
+
+            &:before {
+                @include border-radius(0);
+            }
+        }
+
+        .date {
+            position: relative;
+            font-size: $font-size-huge;
+            color: $gray-base;
+            padding-right: 15px;
+            padding-bottom: 10px;
+
+            &:before {
+                background-color: #fff;
+                content: '';
+                display: block;
+                width: 40px;
+                height: 40px;
+                border: solid 10px $brand-primary;
+                position: absolute;
+                top: -.25em;
+                left: -55px;
+                @include border-radius(50%);
+            }
+        }
+
+        .caption {
+            color: $brand-primary;
+            font-size: $font-size-huge;
+            font-weight: $headings-font-weight;
+            margin-bottom: 10px;
+        }
+    }
+
+    .time-update {
+        margin: 30px 0 0 12px;
+    }
+    @media (min-width: $grid-float-breakpoint) {
+        .pg-row {
+            padding-left: 80px;
+
+            &:before {
+                left: 40px;
+            }
+
+            &,
+            .info {
+                zoom: 1;
+                overflow: hidden;
+            }
+
+            .date,
+            .info {
+                display: table-cell;
+                vertical-align: top;
+            }
+
+            .info {
+                width: 10000px;
+            }
+        }
+
+        .time-update {
+            margin-left: 36px;
+        }
+    }
+}

@@ -1,0 +1,89 @@
+/* Accessibility 無障礙功能
+ * ==================================================*/
+
+// == 導盲磚
+.tactile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    text-align: center;
+    padding: 3px 4px;
+    font-size: 16px;
+    line-height: 1;
+    color: rgba(black, 0);
+    z-index: $zindex-navbar;
+
+    &:focus {
+        color: rgba(black, 1);
+        text-decoration: none;
+    }
+    @media (max-width: $grid-float-breakpoint-max) {
+        display: none;
+    }
+}
+
+// == 不支援 Javascript 時
+// =====================================================
+body:not(.js-enable) {
+    .page-wrapper {
+        padding: 0;
+    }
+    .header {
+        position: static !important;
+    }
+
+    @media (min-width: $grid-float-breakpoint) {
+        .breadcrumb{
+            margin-top: 50px;
+        }
+        .site-nav.nav.navbar-nav {
+            .dropdown.active {
+                position: static;
+                cursor: default;
+
+                .dropdown-menu {
+                    display: block !important;
+                    width: 100%;
+                    left: 0;
+                    text-align: center;
+
+                    > li {
+                        display: inline-block;
+                        border-width: 0;
+
+                        > a {
+                            &:focus,
+                            &:hover {
+                                background-color: transparent;
+                                text-decoration: underline;
+                            }
+                        }
+
+                        &.active > a {
+                            background-color: transparent;
+                            opacity: 0.75;
+                            text-decoration: none;
+                        }
+
+                        + li {
+                            margin-left: -4px;
+
+                            &:before {
+                                background-color: rgba($gray-base, .2);
+                                content: '';
+                                display: block;
+                                position: absolute;
+                                left: 0;
+                                top: 50%;
+                                height: 1em;
+                                width: 1px;
+                                margin-top: -.5em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
